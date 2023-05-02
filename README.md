@@ -14,7 +14,6 @@ second, push to aws ecr.
 
 last, set lambda function (does not explain in this README).
 
-```{note}
 it is important to start creating docker image from `coinor/cylp`, 
 
 becayse starting from `public.ecr.aws/lambda/python:3.10` and
@@ -22,7 +21,6 @@ becayse starting from `public.ecr.aws/lambda/python:3.10` and
 only executing line `RUN  pip3 install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"`
 
 will fail installing Cbc.
-```
 
 ## app.py, cvxpy_prj.py, lambda_cvxpy.ipynb
 just for createing and testing code.
