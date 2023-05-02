@@ -1,0 +1,6 @@
+.DS_Store
+.venv/
+.venv310/
+*.pyc
+*-checkpoint*
+*.md
