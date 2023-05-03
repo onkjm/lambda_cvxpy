@@ -2,8 +2,8 @@
 sample of running cvxpy and Coin-or-CBC on AWS Lambda
 
 lambda has some limitation on uploading code.
-- 50MB for direct upload from console (with zip file)
-- 262MB for upload via S3 (with zip file)
+- 50MB for direct upload via console or S3 (with zip file)
+- 250MB for upload via S3 (with zip file)
 - 10GB for upload via ecr (with container image)
 
 this sample shows how to upload codes via ecr.
@@ -39,7 +39,7 @@ Login to aws account (change `123456789101` to your aws accaount id).
 aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 123456789101.dkr.ecr.ap-northeast-1.amazonaws.com
 ```
 
-Create repository on Amazon Elastic Container Repository (ECR)
+Create repository on Amazon Elastic Container Registry (ECR)
 
 ```
 aws ecr create-repository --region ap-northeast-1 --repository-name cvxpy_prj --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
@@ -95,8 +95,11 @@ try below when lambda function's test returns error.
 - change memory value larger (initial value is 128MB.)
 
 ### links
+- Lambda クオータ　https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/gettingstarted-limits.html
 - aws ecr(Elastic Container Registry) https://ap-northeast-1.console.aws.amazon.com/ecr/home?region=ap-northeast-1
 - Amazon ECR リポジトリへのイメージのアップロード https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/images-create.html#images-upload
 - coinor/cylp https://github.com/coin-or-tools/cylp-docker
 - cvxpy sample code https://www.cvxpy.org/examples/basic/linear_program.html
 - AWS提供でないベースイメージからLambdaを作る https://qiita.com/a_b_/items/337c4afee2e330efefe1
+- コンテナ利用者に捧げる AWS Lambda の新しい開発方式 ! 第 2 回 https://aws.amazon.com/jp/builders-flash/202104/new-lambda-container-development-2/?awsf.filter-name=*all
+- AWS Lambda Python Runtime Interface Client https://github.com/aws/aws-lambda-python-runtime-interface-client

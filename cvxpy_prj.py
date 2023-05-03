@@ -18,7 +18,7 @@ def cvxpy_func(m, n):
     x = cp.Variable(n)
     prob = cp.Problem(cp.Minimize(c.T@x),
                      [A @ x <= b])
-    prob.solve()
+    prob.solve(solver='CBC')
 
     # Print result.
     # print("\nThe optimal value is", prob.value)
